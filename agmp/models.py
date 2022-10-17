@@ -5,6 +5,11 @@ from django.db import models
 ######### New Models #############
 class Drugagmp(models.Model):
     drug_id = models.CharField(max_length=50, null=True, blank=True)
+    drug_bank_id = models.CharField(max_length=50, null=True, blank=True)
+    drug_name = models.CharField(max_length=50, null=True, blank=True)
+    indication = models.CharField(max_length=50, null=True, blank=True)
+    iupac_name_seq = models.CharField(max_length=50, null=True, blank=True)
+    state = models.CharField(max_length=50, null=True, blank=True)
 
 class Geneagmp(models.Model):
     gen_id = models.CharField(max_length=50, null=True, blank=True)

@@ -2,6 +2,9 @@ import csv
 
 from agmp.models import Variantagmp, Drugagmp, Geneagmp
 # python3 manage.py runscript load_data
+# g is for Gene
+# d is for Drug
+# v is for Variant
 
 def run():
 
@@ -20,8 +23,7 @@ def run():
 
         d, created = Drugagmp.objects.get_or_create(drug_id=row[1])
         g, created = Geneagmp.objects.get_or_create(gen_id=row[1])
-        v = Variantagmp(allele=row[0], drugagmp=d, geneagmp=g2,source_db=row[2])
-     
+        v = Variantagmp(allele=row[0], drugagmp=d, geneagmp=g,source_db=row[2])
         v.save()
 
         no_of_genes = Geneagmp.objects.all().count()
