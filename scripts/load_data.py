@@ -8,7 +8,7 @@ from agmp.models import Variantagmp, Drugagmp, Geneagmp
 
 def run():
 
-    fhand = open('csv/file.csv')
+    fhand = open('csv/final.csv',encoding='latin-1')
     reader = csv.reader(fhand)
     next(reader)  # Advance past the header
 
@@ -21,7 +21,7 @@ def run():
     for row in reader:
         # print(row)
 
-        d, created = Drugagmp.objects.get_or_create(drug_id=row[1])
+        d, created = Drugagmp.objects.get_or_create(drug_bank_id=row[2], drug_name=row[3], indication=row[4], iupac_name_seq=row[5], state=row[6])
         g, created = Geneagmp.objects.get_or_create(gen_id=row[1])
         v = Variantagmp(allele=row[0], drugagmp=d, geneagmp=g,source_db=row[2])
         v.save()
