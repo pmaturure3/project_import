@@ -14,6 +14,11 @@ class Drugagmp(models.Model):
 class Geneagmp(models.Model):
     gen_id = models.CharField(max_length=50, null=True, blank=True)
     source_db2 = models.CharField(max_length=50, null=True, blank=True)
+    chromosome = models.CharField(max_length=50, null=True, blank=True)
+    function = models.CharField(max_length=50, null=True, blank=True)
+    gene_name= models.CharField(max_length=50, null=True, blank=True)
+    uniprot_ac= models.CharField(max_length=50, null=True, blank=True)
+
 
 
 class Variantagmp(models.Model):
