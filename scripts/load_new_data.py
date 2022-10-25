@@ -20,7 +20,7 @@ def run():
     Geneagmp.objects.all().delete()
     Studyagmp.objects.all().delete()
     Phenotypeagmp.objects.all().delete()
-    # VariantStudyagmp.objects.all().delete()
+    VariantStudyagmp.objects.all().delete()
     
 
 
@@ -32,15 +32,19 @@ def run():
         g, created = Geneagmp.objects.get_or_create(chromosome=row[14], function=row[16], uniprot=row[15],gene_name=row[9])
         v = Variantagmp(studyagmp=s,drugagmp=d,phenotypeagmp=p, geneagmp=g,allele=row[0], source_db=row[2])
         v.save()
+        vs = VariantStudyagmp(variantagmp=v)
+        vs.save()
 
         no_of_genes = Geneagmp.objects.all().count()
         no_of_drugs = Drugagmp.objects.all().count()
         no_of_variants = Variantagmp.objects.all().count()
         no_of_studies = Studyagmp.objects.all().count()
         no_of_phenotypes = Phenotypeagmp.objects.all().count()
-
+        no_of_varient_studies =VariantStudyagmp.objects.all().count()
     print(" ############ IMPORT JOB ENDED ############ \n")
-    print(f"{no_of_studies}: Genes IMPORTED")
+    print(f"{no_of_varient_studies}: VARIANT STUDIES IMPORTED")
+    print(f"{no_of_phenotypes}: PHENOTYPES IMPORTED")
+    print(f"{no_of_studies}: Studies IMPORTED")
     print(f"{no_of_genes}: Genes IMPORTED") 
     print(f"{no_of_drugs}: DRUGS IMPORTED") 
     print(f"{no_of_variants}: VARIANTS IMPORTED \n")

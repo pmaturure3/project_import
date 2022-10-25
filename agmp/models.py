@@ -33,9 +33,9 @@ class Phenotypeagmp(models.Model):
 
 class Variantagmp(models.Model):
     allele = models.CharField(max_length=50, null=True, blank=True)
-    drugagmp = models.ForeignKey(Drugagmp, on_delete=models.CASCADE, default="DRUG0",null=True, blank=True)
+    drugagmp = models.ForeignKey(Drugagmp, on_delete=models.CASCADE, default="DRUG",null=True, blank=True)
     source_db = models.CharField(max_length=50, null=True, blank=True)
-    geneagmp = models.ForeignKey(Geneagmp, on_delete=models.CASCADE, default="GENE0",null=True, blank=True)
+    geneagmp = models.ForeignKey(Geneagmp, on_delete=models.CASCADE, default="GENE",null=True, blank=True)
     studyagmp = models.ForeignKey(Studyagmp, on_delete=models.CASCADE,null=True, blank=True)
     phenotypeagmp = models.ForeignKey(Phenotypeagmp, on_delete=models.CASCADE,null=True, blank=True)
 
